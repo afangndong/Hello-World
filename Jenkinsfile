@@ -4,19 +4,16 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
+                // This will check out your repository
                 checkout scm
             }
         }
         
-        stage('Run Python Script') {
+        stage('Hello World') {
             steps {
-                script {
-                    if (isUnix()) {
-                        sh 'python3 app.py'
-                    } else {
-                        bat 'python app.py'
-                    }
-                }
+                // This assumes you have a script named hello-world.sh in your repository
+                sh 'chmod +x hello-world.sh'
+                sh './hello-world.sh'
             }
         }
     }
